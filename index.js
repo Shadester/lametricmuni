@@ -31,12 +31,8 @@ function getDueTimes() {
         return reject(error);
       }
 
-      // …otherwise, load the HTML into Cheerio, which give
-      // us jQuery-like access
-
       var parsed = JSON.parse(body);
       var timeArray = parsed["predictions"][0]["direction"]["prediction"];
-      var body = '{ frames: [';
 
       var lametric = {};
       lametric.frames = [];
@@ -47,8 +43,6 @@ function getDueTimes() {
         timeSlot.icon = icon;
         lametric.frames.push(timeSlot);
       }
-
-      //console.log(lametric);
 
       resolve(lametric);
     });
