@@ -32,7 +32,13 @@ function getDueTimes() {
       }
 
       var parsed = JSON.parse(body);
-      var timeArray = parsed["predictions"][0]["direction"]["prediction"];
+      var direction = parsed["predictions"][0]["direction"];
+
+      if (direction.constructor === Array) {
+      	var timeArray = direction[0]["prediction"];
+      } else {
+      	var timeArray = direction["prediction"];
+      }
 
       var lametric = {};
       lametric.frames = [];
